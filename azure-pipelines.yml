@@ -96,15 +96,15 @@ jobs:
   - script: dotnet publish ./build-linux-x64/src/SSCMS.Web/SSCMS.Web.csproj -c $(buildConfiguration) -o ./publish/sscms-$(productVersion)-linux-x64
   - script: npm run copy-linux-x64
   # - script: npm run build-linux-arm64
-  - task: NuGetCommand@2
-    inputs:
-      command: 'restore'
-      restoreSolution: './build-linux-arm64/build.sln'
-      feedsToUse: 'select'
-  - script: dotnet build ./build-linux-arm64/build.sln -c $(buildConfiguration)
-  - script: dotnet publish ./build-linux-arm64/src/SSCMS.Cli/SSCMS.Cli.csproj -c $(buildConfiguration) -r linux-arm64 -o ./publish/sscms-$(productVersion)-linux-arm64
-  - script: dotnet publish ./build-linux-arm64/src/SSCMS.Web/SSCMS.Web.csproj -c $(buildConfiguration) -r linux-arm64 -o ./publish/sscms-$(productVersion)-linux-arm64
-  - script: npm run copy-linux-arm64
+  # - task: NuGetCommand@2
+  #   inputs:
+  #     command: 'restore'
+  #     restoreSolution: './build-linux-arm64/build.sln'
+  #     feedsToUse: 'select'
+  # - script: dotnet build ./build-linux-arm64/build.sln -c $(buildConfiguration)
+  # - script: dotnet publish ./build-linux-arm64/src/SSCMS.Cli/SSCMS.Cli.csproj -c $(buildConfiguration) -r linux-arm64 -o ./publish/sscms-$(productVersion)-linux-arm64
+  # - script: dotnet publish ./build-linux-arm64/src/SSCMS.Web/SSCMS.Web.csproj -c $(buildConfiguration) -r linux-arm64 -o ./publish/sscms-$(productVersion)-linux-arm64
+  # - script: npm run copy-linux-arm64
   # - task: ArchiveFiles@2
   #   inputs:
   #     rootFolderOrFile: './publish/sscms-$(productVersion)-linux-x64' 
