@@ -95,7 +95,7 @@ jobs:
   - script: dotnet publish ./build-linux-x64/src/SSCMS.Cli/SSCMS.Cli.csproj -c $(buildConfiguration) -o ./publish/sscms-$(productVersion)-linux-x64
   - script: dotnet publish ./build-linux-x64/src/SSCMS.Web/SSCMS.Web.csproj -c $(buildConfiguration) -o ./publish/sscms-$(productVersion)-linux-x64
   - script: npm run copy-linux-x64
-  - script: npm run build-linux-arm64
+  # - script: npm run build-linux-arm64
   - task: NuGetCommand@2
     inputs:
       command: 'restore'
@@ -145,7 +145,7 @@ jobs:
   #     OSS_BUCKET_WWW: $(ossBucketWww)
   - task: PublishPipelineArtifact@1
     inputs:
-      targetPath: './publish/dist'
+      targetPath: './publish'
       artifactName: 'sscms-$(productVersion)-linux'
   - script: docker build -f docker/Dockerfile.core --no-cache -t $(imageName):latest -t $(imageName):$(productVersion) .
   - task: Docker@2
