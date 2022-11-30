@@ -152,7 +152,7 @@ jobs:
     displayName: Push image
     inputs:
       containerRegistry: |
-        docker
+        abg-registry
       repository: $(imageName)
       command: push
       tags: |
