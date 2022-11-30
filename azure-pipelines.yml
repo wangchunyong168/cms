@@ -45,18 +45,18 @@ jobs:
   - script: dotnet publish ./build-win-x86/src/SSCMS.Cli/SSCMS.Cli.csproj -c $(buildConfiguration) -o ./publish/sscms-$(productVersion)-win-x86
   - script: dotnet publish ./build-win-x86/src/SSCMS.Web/SSCMS.Web.csproj -c $(buildConfiguration) -o ./publish/sscms-$(productVersion)-win-x86
   - script: npm run copy-win-x86
-  - task: ArchiveFiles@2
-    inputs:
-      rootFolderOrFile: './publish/sscms-$(productVersion)-win-x64' 
-      archiveType: 'zip'
-      includeRootFolder: false
-      archiveFile: './publish/dist/sscms-$(productVersion)-win-x64.zip'
-  - script: npm run publish-win-x64-zip
-    env:
-      OSS_ACCESS_KEY_ID: $(ossAccessKeyId)
-      OSS_SECRET_ACCESS_KEY: $(ossSecretAccessKey)
-      OSS_BUCKET_DL: $(ossBucketDl)
-      OSS_BUCKET_WWW: $(ossBucketWww)
+  # - task: ArchiveFiles@2
+  #   inputs:
+  #     rootFolderOrFile: './publish/sscms-$(productVersion)-win-x64' 
+  #     archiveType: 'zip'
+  #     includeRootFolder: false
+  #     archiveFile: './publish/dist/sscms-$(productVersion)-win-x64.zip'
+  # - script: npm run publish-win-x64-zip
+  #   env:
+  #     OSS_ACCESS_KEY_ID: $(ossAccessKeyId)
+  #     OSS_SECRET_ACCESS_KEY: $(ossSecretAccessKey)
+  #     OSS_BUCKET_DL: $(ossBucketDl)
+  #     OSS_BUCKET_WWW: $(ossBucketWww)
   # - task: ArchiveFiles@2
   #   inputs:
   #     rootFolderOrFile: './publish/sscms-$(productVersion)-win-x86' 
@@ -118,31 +118,31 @@ jobs:
   #     OSS_SECRET_ACCESS_KEY: $(ossSecretAccessKey)
   #     OSS_BUCKET_DL: $(ossBucketDl)
   #     OSS_BUCKET_WWW: $(ossBucketWww)
-  - task: ArchiveFiles@2
-    inputs:
-      rootFolderOrFile: './publish/sscms-$(productVersion)-linux-x64' 
-      archiveType: 'zip'
-      includeRootFolder: false
-      archiveFile: './publish/dist/sscms-$(productVersion)-linux-x64.zip'
-  - script: npm run publish-linux-x64-zip
-    env:
-      OSS_ACCESS_KEY_ID: $(ossAccessKeyId)
-      OSS_SECRET_ACCESS_KEY: $(ossSecretAccessKey)
-      OSS_BUCKET_DL: $(ossBucketDl)
-      OSS_BUCKET_WWW: $(ossBucketWww)
-  - task: ArchiveFiles@2
-    inputs:
-      rootFolderOrFile: './publish/sscms-$(productVersion)-linux-arm64' 
-      archiveType: 'tar'
-      tarCompression: 'gz'
-      includeRootFolder: false
-      archiveFile: './publish/dist/sscms-$(productVersion)-linux-arm64.tar.gz'
-  - script: npm run publish-linux-arm64-tgz
-    env:
-      OSS_ACCESS_KEY_ID: $(ossAccessKeyId)
-      OSS_SECRET_ACCESS_KEY: $(ossSecretAccessKey)
-      OSS_BUCKET_DL: $(ossBucketDl)
-      OSS_BUCKET_WWW: $(ossBucketWww)
+  # - task: ArchiveFiles@2
+  #   inputs:
+  #     rootFolderOrFile: './publish/sscms-$(productVersion)-linux-x64' 
+  #     archiveType: 'zip'
+  #     includeRootFolder: false
+  #     archiveFile: './publish/dist/sscms-$(productVersion)-linux-x64.zip'
+  # - script: npm run publish-linux-x64-zip
+  #   env:
+  #     OSS_ACCESS_KEY_ID: $(ossAccessKeyId)
+  #     OSS_SECRET_ACCESS_KEY: $(ossSecretAccessKey)
+  #     OSS_BUCKET_DL: $(ossBucketDl)
+  #     OSS_BUCKET_WWW: $(ossBucketWww)
+  # - task: ArchiveFiles@2
+  #   inputs:
+  #     rootFolderOrFile: './publish/sscms-$(productVersion)-linux-arm64' 
+  #     archiveType: 'tar'
+  #     tarCompression: 'gz'
+  #     includeRootFolder: false
+  #     archiveFile: './publish/dist/sscms-$(productVersion)-linux-arm64.tar.gz'
+  # - script: npm run publish-linux-arm64-tgz
+  #   env:
+  #     OSS_ACCESS_KEY_ID: $(ossAccessKeyId)
+  #     OSS_SECRET_ACCESS_KEY: $(ossSecretAccessKey)
+  #     OSS_BUCKET_DL: $(ossBucketDl)
+  #     OSS_BUCKET_WWW: $(ossBucketWww)
   - task: PublishPipelineArtifact@1
     inputs:
       targetPath: './publish/dist'
