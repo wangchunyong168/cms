@@ -150,11 +150,15 @@ jobs:
       artifactName: 'sscms-$(productVersion)-linux'
   - script: docker build -f docker/Dockerfile.core --no-cache -t $(imageName):latest -t $(imageName):$(productVersion) .
   - task: Docker@2
+    displayName: build and push image
     inputs:
       containerRegistry: 'abg-registry'
       repository: 'cms'
       command: 'buildAndPush'
       Dockerfile: 'docker/Dockerfile.core'
+      tags: |
+        $(Build.BuildNumber)
+        latest
   # - task: Docker@2
   #   displayName: Push image
   #   inputs:
