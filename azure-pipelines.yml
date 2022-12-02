@@ -157,7 +157,6 @@ jobs:
       command: 'buildAndPush'
       Dockerfile: 'docker/Dockerfile.core'
       tags: |
-        $(Build.BuildNumber)
         latest
   # - task: Docker@2
   #   displayName: Push image
