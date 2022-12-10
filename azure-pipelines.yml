@@ -153,7 +153,7 @@ jobs:
     displayName: build and push image
     inputs:
       containerRegistry: 'abg-registry'
-      repository: 'cms'
+      repository: 'devops'
       command: 'buildAndPush'
       Dockerfile: 'docker/Dockerfile.core'
   # - task: Docker@2
